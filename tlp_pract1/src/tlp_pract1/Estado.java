@@ -4,9 +4,6 @@ public class Estado {
 	private int id;
 	private String tipo;
 	
-	public Estado() {
-		
-	}
 	
 	public Estado(int id,String tipo) {
 		this.id=id;
