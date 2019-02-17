@@ -1,25 +1,27 @@
 package tlp_pract1;
 
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public abstract class Automata {
+public class AutomataD extends Automata{
 
-	protected char[] sigma;
+	private ArrayList<Estado> estados;
+	private int [][] delta;
 	
 	static Scanner sc=new Scanner(System.in);
 	
-	public Automata() {
-		
-		sigma= new char [1];
-		sigma[0]= '1';
-		
+	public AutomataD() {
+		super();
+		estados= new ArrayList<Estado>();
+		estados.add(new Estado(0,"inicial"));
+		delta= new int [estados.size()][sigma.length];
+		delta[0][0]= Integer.MAX_VALUE;
 	}
 	
-	public Automata(char [] sigma) {
-	
-		this.sigma=sigma;
-		
+	public AutomataD(ArrayList<Estado> estados, char [] sigma,int [][] delta) {
+		super(sigma);
+		this.estados= estados;
+		this.delta=delta;
 	}
 	
 	
@@ -174,8 +176,4 @@ public abstract class Automata {
 			resul[i]=false;
 		return resul;
 	}
-	
-	
-	
 }
-

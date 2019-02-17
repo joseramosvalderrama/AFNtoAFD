@@ -1,11 +1,11 @@
 package tlp_pract1;
 
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public abstract class Automata {
-
-	protected char[] sigma;
+public class AutomataN {
+	private Estado [] estados;
+	private 
 	
 	static Scanner sc=new Scanner(System.in);
 	
@@ -176,6 +176,4 @@ public abstract class Automata {
 	}
 	
 	
-	
 }
-
