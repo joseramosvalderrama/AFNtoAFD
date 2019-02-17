@@ -9,9 +9,7 @@ public class Principal {
 	public static void main(String[] args) {
 		//crearAutomata();
 		
-		Automata aut = new Automata();
-		aut.leerAutomata();
-		aut.reducirAutomata();
+		
 		
 	}
 	
