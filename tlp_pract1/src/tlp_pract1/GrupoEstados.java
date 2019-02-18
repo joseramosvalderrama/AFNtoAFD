@@ -4,13 +4,22 @@ import java.util.ArrayList;
 
 public class GrupoEstados {
 	private char in1;
-	private Estado in2;
 	private ArrayList<Estado> out;
+	private int id;
 	
-	public GrupoEstados(Estado e, char c){
-		in1=c;
-		in2=e;
-		out= new ArrayList<Estado>();
+	public GrupoEstados(int i){
+		id=i;
 	}
+	
+	public ArrayList<Estado> getOut(){
+		return this.out;
+	}
+	
+	
+	
+	public void aniadirEstado(Estado e) {
+		out.add(e);
+	}
+	
 
 }

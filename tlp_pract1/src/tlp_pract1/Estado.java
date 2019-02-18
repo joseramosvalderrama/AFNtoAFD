@@ -23,5 +23,7 @@ public class Estado {
 		return tipo;
 	}
 	
-	
+	public Estado getEstado() {
+		return this;
+	}
 }

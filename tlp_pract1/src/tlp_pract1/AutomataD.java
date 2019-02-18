@@ -12,13 +12,37 @@ public class AutomataD extends Automata{
 	
 	public AutomataD() {
 		super();
-		delta= new int [estados.length][sigma.length];
+		delta= new int [estados.size()][sigma.length];
 		delta[0][0]= Integer.MAX_VALUE;
 	}
 	
 	public AutomataD(Estado [] estados, char [] sigma,int [][] delta) {
 		super(sigma, estados);
 		this.delta=delta;
+	}
+	
+	public AutomataD transformar(AutomataN aut) {
+		ArrayList<GrupoEstados> act= new ArrayList<GrupoEstados>();
+		ArrayList<GrupoEstados> tot= new ArrayList<GrupoEstados>();
+		
+		estados.add(new Estado(0,"inicial"));
+		act.add(new GrupoEstados(0));
+		act.get(0).aniadirEstado(aut.getEstados().get(0));	//Linea de Victor.
+		tot=act;
+		
+		do {
+			for(GrupoEstados it1 : act) {
+				
+			
+				for(Estado it2 : it1)
+				
+				act.remove(it1.getId());
+			}
+					
+			
+		}while(!act.isEmpty());
+		
+		return this;
 	}
 	
 	

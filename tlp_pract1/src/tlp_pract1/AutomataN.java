@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AutomataN extends Automata{
-	private int [][][] delta;
+	private GrupoEstados [][] delta;
 	
 	static Scanner sc=new Scanner(System.in);
 	
@@ -15,12 +15,14 @@ public class AutomataN extends Automata{
 		
 	}
 	
-	public AutomataN(Estado [] estados, char [] sigma, int [][][] delta) {
+	public AutomataN(Estado [] estados, char [] sigma, GrupoEstados [][] delta) {
 		
 		super(sigma, estados);
 		this.delta= delta;
 		
 	}
+	
+	
 	
 /*	
 	public void leerAutomata() {

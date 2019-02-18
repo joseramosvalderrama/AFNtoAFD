@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public abstract class Automata {
 
 	protected char[] sigma;
-	protected Estado[] estados;
+	protected ArrayList<Estado> estados;
 	
 	static Scanner sc=new Scanner(System.in);
 	
@@ -14,9 +14,8 @@ public abstract class Automata {
 		
 		sigma= new char [1];
 		sigma[0]= '1';
-		estados = new Estado[1];
-		estados[0]= new Estado(0, "inicial");
-		
+		estados= new ArrayList<Estado>();
+		estados.add(new Estado(0,"inicial"));
 	}
 	
 	public Automata(char [] sigma, Estado[] estados) {
@@ -25,6 +24,27 @@ public abstract class Automata {
 		this.estados=estados;
 		
 	}
+
+	public char[] getSigma() {
+		return sigma;
+	}
+
+	public void setSigma(char[] sigma) {
+		this.sigma = sigma;
+	}
+
+	public ArrayList<Estado> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(ArrayList<Estado> estados) {
+		this.estados = estados;
+	}
+	
+	public Estado getEstado(int i) {
+		return estados.get(i);
+	}
+	
 	
 }
 
