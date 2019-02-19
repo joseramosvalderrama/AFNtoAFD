@@ -18,10 +18,11 @@ public abstract class Automata {
 		estados.add(new Estado(0,"inicial"));
 	}
 	
-	public Automata(char [] sigma, Estado[] estados) {
+	public Automata(char [] sigma,Estado [] estados) {
 	
 		this.sigma=sigma;
-		this.estados=estados;
+		for(int i=0;i<estados.length;i++)
+		this.estados.add(estados[i]);
 		
 	}
 

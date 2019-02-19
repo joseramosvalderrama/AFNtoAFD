@@ -1,6 +1,8 @@
 package tlp_pract1;
 
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class AutomataD extends Automata{
@@ -78,11 +80,16 @@ public class AutomataD extends Automata{
 	}
 	
 	private void buscaryeliminar(boolean [] ac, boolean [] coac) {
+		Iterator<Estado> it=estados.iterator();
 		for(int i=0; i< ac.length;i++)
+		{
 			if(!ac[i] || !coac[i]) {
-				estados[i]=null;
+				//estados[i]=null;
+				it.remove();
 				eliminarTransiciones(i);
 			}
+			it.next();
+		}
 	}
 	
 	private void eliminarTransiciones(int id) {
@@ -120,12 +127,21 @@ public class AutomataD extends Automata{
 		ArrayList<Integer> ant = new ArrayList<Integer>();
 		ArrayList<Integer> act = new ArrayList<Integer>();
 		boolean [] it =resul;
+		Iterator<Estado> it2=estados.iterator();
+		Estado a=it2.next();
 		//iteracion 1
-		for (int i=0; i<estados.length; i++)
+		/*for (int i=0; i<estados.length; i++)
 			if(estados[i].getTipo().equals("final")) {
 				act.add(i);
 				it[i]=true;
-			}
+			}*/
+		while(it2.hasNext())
+		{
+			if(a.getTipo().equals("final"))
+				act.
+			a=it2.next();
+			it2.
+		}
 		
 		do {
 			resul=it;
