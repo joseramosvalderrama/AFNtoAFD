@@ -22,7 +22,9 @@ public class AutomataN extends Automata{
 		
 	}
 	
-	
+	public GrupoEstados [][] getDelta(){
+		return delta;
+	}
 	
 /*	
 	public void leerAutomata() {

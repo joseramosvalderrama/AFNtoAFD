@@ -11,6 +11,10 @@ public class GrupoEstados {
 		id=i;
 	}
 	
+	public void setOut(ArrayList<Estado> out) {
+		this.out=out;
+	}
+	
 	public ArrayList<Estado> getOut(){
 		return this.out;
 	}

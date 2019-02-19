@@ -23,26 +23,47 @@ public class AutomataD extends Automata{
 	
 	public AutomataD transformar(AutomataN aut) {
 		ArrayList<GrupoEstados> act= new ArrayList<GrupoEstados>();
-		ArrayList<GrupoEstados> tot= new ArrayList<GrupoEstados>();
+		int it=0;
+		int estadoMax=0;
 		
-		estados.add(new Estado(0,"inicial"));
-		act.add(new GrupoEstados(0));
-		act.get(0).aniadirEstado(aut.getEstados().get(0));	//Linea de Victor.
-		tot=act;
+		estados.add(new Estado(it,"inicial"));
+		act.add(new GrupoEstados(it));
+		act.get(it).aniadirEstado(aut.getEstados().get(it));	//Linea de Victor.
+		
 		
 		do {
-			for(GrupoEstados it1 : act) {
-				
-			
-				for(Estado it2 : it1)
-				
-				act.remove(it1.getId());
-			}
-					
-			
-		}while(!act.isEmpty());
+			it++;
+			GrupoEstados it1 = act.get(it);
+			for(Estado it2 : it1.getOut()) 
+				for(int i=0;i<aut.getSigma().length;i++) {
+					ArrayList<Estado> aux = aut.getDelta()[it2.getId()][i].getOut();
+					if(noestaAuxenAct(aux,act)) {
+						estadoMax++;
+						act.add(new GrupoEstados(estadoMax));
+						act.get(estadoMax).setOut(aux);
+						if(auxhasFinal(aux))
+							estados.add(new Estado(estadoMax,"Final"));
+						else estados.add (new Estado(estadoMax,"Comun"));
+									
+						}	
+				}
+		}while(it < estadoMax);
 		
 		return this;
+	}
+	
+	private boolean auxhasFinal(ArrayList<Estado> estados) {
+		for(Estado es : estados)
+			if(es.getTipo().equals("Final"))
+				return true;
+		return false;
+	}
+	
+	private boolean noestaAuxenAct(ArrayList<Estado> estados, ArrayList<GrupoEstados> g) {
+		for(GrupoEstados i : g)
+			if(g.equals(estados))
+				return false;
+		return true;
 	}
 	
 	
