@@ -34,14 +34,13 @@ public class AutomataD extends Automata{
 		
 		
 		do {
-			it++;
-			GrupoEstados it1 = act.get(it);
-			for(Estado it2 : it1.getOut()) 
+			GrupoEstados it1 = act.get(it);		//Cogemos el grupo de estados de esta iteración.
+			for(Estado it2 : it1.getOut()) 		//Recorremos cada uno de los estados de it1 para ver sus transiciones.
 				for(int i=0;i<aut.getSigma().length;i++) {
 					ArrayList<Estado> aux = aut.getDelta()[it2.getId()][i].getOut();
 					if(noestaAuxenAct(aux,act)) {
 						estadoMax++;
-						act.add(new GrupoEstados(estadoMax));
+						act.add(new GrupoEstados(estadoMax,it,aut.getSigma()[i]));
 						act.get(estadoMax).setOut(aux);
 						if(auxhasFinal(aux))
 							estados.add(new Estado(estadoMax,"Final"));
@@ -49,7 +48,8 @@ public class AutomataD extends Automata{
 									
 						}	
 				}
-		}while(it < estadoMax);
+			it++;
+		}while(it <= estadoMax);
 		
 		return this;
 	}
