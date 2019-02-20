@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AutomataN extends Automata{
+	
 	private GrupoEstados [][] delta;
 	
 	static Scanner sc=new Scanner(System.in);
 	
 	public AutomataN() {
-	
 		super();
-		
 		
 	}
 	
@@ -22,11 +21,11 @@ public class AutomataN extends Automata{
 		
 	}
 	
-	public GrupoEstados [][] getDelta(){
+	public GrupoEstados [][] getDelta() {
 		return delta;
 	}
 	
-/*	
+
 	public void leerAutomata() {
 		
 		this.estados= leerEstados();
@@ -38,23 +37,55 @@ public class AutomataN extends Automata{
 		
 	}
 	
-	private int [][] leerDelta(Estado [] estados, char [] numInputs){
-		int [][] delta = new int [estados.length][numInputs.length];
+	private GrupoEstados [][] leerDelta(ArrayList<Estado> estados, char [] numInputs){
+		GrupoEstados [][] delta = new GrupoEstados [estados.size()][numInputs.length];
+		int it=0;
 		
-		for(int i=0;i<estados.length;i++) {
-			System.out.println("Estado "+estados[i].toString());
+		for(Estado e : estados) {
+			System.out.println("Estado "+e.toString());
 			for(int j=0; j<numInputs.length; j++) {
-				do {
-				System.out.println("Relaciona a través de "+numInputs[j]+" con id:"+i+ "(Numero Negativo si no relaciona) ");
-				delta[i][j]= sc.nextInt();
-				}while (delta[i][j]>= estados.length);
-				if(delta[i][j] < 0)
-					delta[i][j]= Integer.MAX_VALUE;
+				int answ;
+				delta[it][j]= new GrupoEstados(it);
+				System.out.println("Relaciona a través de "+numInputs[j]+" con id:"+it+ "(Numero Negativo para terminar)");
+				do{
+					answ= sc.nextInt();
+					if(answ >= 0)
+						delta[it][j].aniadirEstado(estados.get(answ));
+				} while(answ >= 0);
 			}
+			it++;
 		}
 		
 		return delta;
 	}
+	
+	private ArrayList<Estado> leerEstados() {
+		int it=0;
+		char answ;
+		ArrayList<Estado>  estados = new ArrayList<Estado>();
+		
+		System.out.println("Introduzca los estados terminando con un .");
+
+		estados.add(new Estado(0, "inicial"));
+		
+		
+		do {
+			it++;
+			System.out.println("Estado n"+it+" es final? (S/N) O . si no quiere aniadirlo.");
+			answ = sc.next().charAt(0);
+			if(answ == '.')
+				System.out.println("Numero de estados = "+ it);
+			else if (answ== 'S'  || answ== 's')
+				estados.add(new Estado(it,"final"));
+			else
+				estados.add(new Estado(it,"normal"));
+		}while(answ != '.');
+		
+		return estados;
+		
+	}
+	
+	
 	
 	private String leerSigma() {
 		String sigma;
@@ -63,6 +94,8 @@ public class AutomataN extends Automata{
 		sigma= sc.next();
 		return sigma;
 	}
+	
+	/*
 	
 	private Estado [] leerEstados() {
 		int numestados;
@@ -87,8 +120,26 @@ public class AutomataN extends Automata{
 		return estados;
 		
 	}
-*/	
+	
+	private int [][] leerDelta(Estado [] estados, char [] numInputs){
+		int [][] delta = new int [estados.length][numInputs.length];
+		
+		for(int i=0;i<estados.length;i++) {
+			System.out.println("Estado "+estados[i].toString());
+			for(int j=0; j<numInputs.length; j++) {
+				do {
+				System.out.println("Relaciona a través de "+numInputs[j]+" con id:"+i+ "(Numero Negativo si no relaciona) ");
+				delta[i][j]= sc.nextInt();
+				}while (delta[i][j]>= estados.length);
+				if(delta[i][j] < 0)
+					delta[i][j]= Integer.MAX_VALUE;
+			}
+		}
+		
+		return delta;
+	}
 	
 	
+	*/
 	
 }

@@ -77,7 +77,7 @@ public class AutomataD extends Automata{
 	
 	private boolean noestaAuxenAct(ArrayList<Estado> estados, ArrayList<GrupoEstados> g) {
 		for(GrupoEstados i : g)
-			if(g.equals(estados))
+			if(i.getOut().equals(estados))
 				return false;
 		return true;
 	}
