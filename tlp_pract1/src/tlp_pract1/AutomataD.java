@@ -140,7 +140,7 @@ public class AutomataD extends Automata{
 			if(a.getTipo().equals("final"))
 				act.
 			a=it2.next();
-			it2.
+			it2.add
 		}
 		
 		do {
