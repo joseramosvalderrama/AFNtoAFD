@@ -28,7 +28,8 @@ public class AutomataD extends Automata{
 		int it=0;
 		int estadoMax=0;
 		
-		estados.add(new Estado(it,"inicial"));
+		super.sigma= aut.sigma;
+		super.estados.add(new Estado(it,"inicial"));
 		act.add(new GrupoEstados(it));
 		act.get(it).aniadirEstado(aut.getEstados().get(it));	//Linea de Victor.
 		
@@ -40,18 +41,31 @@ public class AutomataD extends Automata{
 					ArrayList<Estado> aux = aut.getDelta()[it2.getId()][i].getOut();
 					if(noestaAuxenAct(aux,act)) {
 						estadoMax++;
-						act.add(new GrupoEstados(estadoMax,it,aut.getSigma()[i]));
+						act.add(new GrupoEstados(estadoMax,it,i));	//Rellenar s1,s2...
 						act.get(estadoMax).setOut(aux);
 						if(auxhasFinal(aux))
-							estados.add(new Estado(estadoMax,"Final"));
-						else estados.add (new Estado(estadoMax,"Comun"));
+							super.estados.add(new Estado(estadoMax,"Final"));
+						else super.estados.add (new Estado(estadoMax,"Comun"));
 									
 						}	
 				}
 			it++;
 		}while(it <= estadoMax);
 		
+		rellenarDelta(act);
+		
 		return this;
+	}
+	
+	private void rellenarDelta(ArrayList<GrupoEstados> grupos) {
+		delta= new int [grupos.size()][sigma.length];
+		
+		
+		for(GrupoEstados g : grupos) {
+			delta[g.getIn1()][g.getIn2()]=g.getId();
+		}
+			
+				
 	}
 	
 	private boolean auxhasFinal(ArrayList<Estado> estados) {
@@ -127,14 +141,14 @@ public class AutomataD extends Automata{
 		ArrayList<Integer> ant = new ArrayList<Integer>();
 		ArrayList<Integer> act = new ArrayList<Integer>();
 		boolean [] it =resul;
-		Iterator<Estado> it2=estados.iterator();
-		Estado a=it2.next();
-		//iteracion 1
+		//Iterator<Estado> it2=estados.iterator();
+		//Estado a=it2.next();
+		
 		/*for (int i=0; i<estados.length; i++)
 			if(estados[i].getTipo().equals("final")) {
 				act.add(i);
 				it[i]=true;
-			}*/
+			}
 		while(it2.hasNext())
 		{
 			if(a.getTipo().equals("final"))
@@ -142,6 +156,14 @@ public class AutomataD extends Automata{
 			a=it2.next();
 			it2.add
 		}
+		*/
+		
+		//iteracion 1
+		for (Estado e : super.estados)
+			if(e.getTipo().equals("final")) {
+				act.add(e.getId());
+				it[e.getId()]=true;
+			}
 		
 		do {
 			resul=it;
@@ -169,9 +191,16 @@ public class AutomataD extends Automata{
 	
 	
 	private boolean [] inicializarafalse() {
-		boolean [] resul= new boolean [estados.length];
+		boolean [] resul= new boolean [estados.size()];
+		
+		/*
 		for(int i=0; i< estados.length; i++)
 			resul[i]=false;
+			
+		*/
+		for(Estado e : super.estados)
+			resul[e.getId()]=false;
+		
 		return resul;
 	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GrupoEstados {
 	private int in1;
-	private char in2;
+	private int in2;
 	private ArrayList<Estado> out;
 	private int id;
 	
@@ -15,11 +15,23 @@ public class GrupoEstados {
 		out= new ArrayList<Estado>();
 	}
 	
-	public GrupoEstados(int id, int in1, char in2){
+	public GrupoEstados(int id, int in1, int in2){
 		this.id=id;
 		this.in1=in1;
 		this.in2=in2;
 		out= new ArrayList<Estado>();
+	}
+	
+	public int getIn1() {
+		return in1;
+	}
+	
+	public int getIn2() {
+		return in2;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public void setOut(ArrayList<Estado> out) {
@@ -30,8 +42,7 @@ public class GrupoEstados {
 		return this.out;
 	}
 	
-	
-	
+
 	public void aniadirEstado(Estado e) {
 		out.add(e);
 	}
