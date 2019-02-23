@@ -35,7 +35,7 @@ public class AutomataD extends Automata{
 		
 		
 		do {
-			GrupoEstados it1 = act.get(it);		//Cogemos el grupo de estados de esta iteración.
+			GrupoEstados it1 = act.get(it);		//Cogemos el grupo de estados de esta iteracion.
 			for(Estado it2 : it1.getOut()) 		//Recorremos cada uno de los estados de it1 para ver sus transiciones.
 				for(int i=0;i<aut.getSigma().length;i++) {
 					ArrayList<Estado> aux = aut.getDelta()[it2.getId()][i].getOut();
