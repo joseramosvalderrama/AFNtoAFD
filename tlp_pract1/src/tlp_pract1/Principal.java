@@ -8,10 +8,11 @@ public class Principal {
 
 	public static void main(String[] args) {
 		//crearAutomata();
-		Automata an= new AutomataN();
-		Automata ad= new AutomataD();
-		ad=transformar(an);
-		ad.
+		AutomataN an= new AutomataN();
+		AutomataD ad= new AutomataD();
+		an.leerAutomata();
+		ad.transformar(an);
+		ad.reducirAutomata();
 		
 	}
 	
