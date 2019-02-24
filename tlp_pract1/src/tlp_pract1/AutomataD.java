@@ -176,7 +176,7 @@ public class AutomataD extends Automata{
 						act.add(j);
 						it[j]=true;
 					 }
-		}while(esigual(resul,it));
+		}while(!esigual(resul,it));
 	}
 	
 	private boolean esigual(boolean [] v1, boolean [] v2) {
