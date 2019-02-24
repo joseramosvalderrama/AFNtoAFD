@@ -134,7 +134,7 @@ public class AutomataD extends Automata{
 						it[delta[i][j]]=true;
 						act.add(delta[i][j]);
 					}
-		}while(esigual(resul,it));
+		}while(!esigual(resul,it));
 	}
 	
 	private void rellenarCoAccesibles(boolean [] resul) {
