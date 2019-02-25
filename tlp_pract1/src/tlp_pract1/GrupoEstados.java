@@ -24,8 +24,10 @@ public class GrupoEstados {
 	
 	public String toString() {
 		String resul="{";
-		for(Estado e : out)
+		for(Estado e : out) 
 			resul+=e.getId()+",";
+		resul = resul.substring(0, resul.length() - 1);
+		resul +="}";
 		return resul;
 	}
 	

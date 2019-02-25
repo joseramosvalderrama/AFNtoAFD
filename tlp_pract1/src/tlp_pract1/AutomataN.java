@@ -55,7 +55,7 @@ public class AutomataN extends Automata{
 			for(int j=0; j<numInputs.length; j++) {
 				int answ;
 				delta[it][j]= new GrupoEstados(it);
-				System.out.println("Relaciona a través de "+numInputs[j]+" con id:"+it+ "(Numero Negativo para terminar)");
+				System.out.println("Relaciona a través de "+numInputs[j]+"(Numero Negativo para terminar)");
 				do{
 					answ= sc.nextInt();
 					if(answ >= 0)

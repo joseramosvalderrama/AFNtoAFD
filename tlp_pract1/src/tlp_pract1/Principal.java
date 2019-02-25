@@ -11,9 +11,11 @@ public class Principal {
 		AutomataN an= new AutomataN();
 		AutomataD ad= new AutomataD();
 		an.leerAutomata();
+		an.mostrarDelta();
 		ad.transformar(an);
+		ad.mostrarDelta();
 		ad.reducirAutomata();
-		
+		ad.mostrarDelta();
 	}
 	
 }
