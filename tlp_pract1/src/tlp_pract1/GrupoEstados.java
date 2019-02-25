@@ -22,6 +22,13 @@ public class GrupoEstados {
 		out= new ArrayList<Estado>();
 	}
 	
+	public String toString() {
+		String resul="{";
+		for(Estado e : out)
+			resul+=e.getId()+",";
+		return resul;
+	}
+	
 	public int getIn1() {
 		return in1;
 	}

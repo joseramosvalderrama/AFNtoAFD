@@ -23,6 +23,14 @@ public class AutomataD extends Automata{
 		this.delta=delta;
 	}
 	
+	public void mostrarDelta() {
+		for(int i=0;i<delta.length;i++) {
+			System.out.println("Estado "+i);
+			for(int j=0;j<delta[0].length;j++)
+				System.out.println("\tA traves de "+sigma[j]+": "+delta[i][j]);
+		}	
+	}
+	
 	public AutomataD transformar(AutomataN aut) {
 		ArrayList<GrupoEstados> act= new ArrayList<GrupoEstados>();
 		int it=0;
