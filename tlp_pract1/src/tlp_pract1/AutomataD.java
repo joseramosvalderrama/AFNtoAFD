@@ -33,7 +33,7 @@ public class AutomataD extends Automata{
 	
 	public AutomataD transformar(AutomataN aut) {
 		ArrayList<GrupoEstados> act= new ArrayList<GrupoEstados>();
-		HashMap<Integer, GrupoEstados> auxDelta= new HashMap<>();
+		HashMap<GrupoEstados, Integer> auxDelta= new HashMap<>();
 		int it=0;
 		int estadoMax=0;
 		
@@ -41,6 +41,8 @@ public class AutomataD extends Automata{
 		super.estados.add(new Estado(it,"inicial"));
 		act.add(new GrupoEstados(it));
 		act.get(it).aniadirEstado(aut.getEstados().get(it));	//Linea de Victor.
+		auxDelta.put(new GrupoEstados(it), null);
+		auxDelta
 		
 		
 		do {
