@@ -34,16 +34,19 @@ public class AutomataD extends Automata{
 	public AutomataD transformar(AutomataN aut) {
 		ArrayList<GrupoEstados> act= new ArrayList<GrupoEstados>();
 		HashMap<GrupoEstados, Integer> auxDelta= new HashMap<>();
-		int it=0;
+		int it=0,cont=0;
 		int estadoMax=0;
 		
 		super.sigma= aut.sigma;
 		super.estados.add(new Estado(it,"inicial"));
 		act.add(new GrupoEstados(it));
 		act.get(it).aniadirEstado(aut.getEstados().get(it));	//Linea de Victor.
-		auxDelta.put(new GrupoEstados(it), null);
+	
+		auxDelta.put(new GrupoEstados(cont), null);
+		cont++;
+		//Iterator cx= auxDelta.keySet().iterator();
 		
-		
+		GrupoEstados auxi= new GrupoEstados(1);
 		do {
 			GrupoEstados it1 = act.get(it);		//Cogemos el grupo de estados de esta iteracion.
 			for(Estado it2 : it1.getOut()) 		//Recorremos cada uno de los estados de it1 para ver sus transiciones.
@@ -51,7 +54,13 @@ public class AutomataD extends Automata{
 					ArrayList<Estado> aux = aut.getDelta()[it2.getId()][i].getOut();
 					if(noestaAuxenAct(aux,act)) {
 						estadoMax++;
-						act.add(new GrupoEstados(estadoMax,it,i));	//Rellenar s1,s2...
+						cont++;// es el id del nuevo grupo de estados. NO se si va antes de este for
+						//act.add(new GrupoEstados(estadoMax,it,i));	//Rellenar s1,s2...
+						auxi.aniadirEstado(it2);
+						auxDelta.put(auxi, Integer.(aut.sigma));
+						
+					//la idea es coger en una clase auxiliar de grupoEstados todos los estados que se formarian con una transición y 
+					//guardarlos con put junto con sigma
 						act.get(estadoMax).setOut(aux);
 						if(auxhasFinal(aux))
 							super.estados.add(new Estado(estadoMax,"Final"));

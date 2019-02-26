@@ -13,11 +13,7 @@ public class GrupoEstados {
 		out= new ArrayList<Estado>();
 	}
 	
-	public GrupoEstados(int id, int in1, int in2){
-		this.id=id;
-		out= new ArrayList<Estado>();
-	}
-	
+
 	public String toString() {
 		String resul="{";
 		for(Estado e : out) 
