@@ -42,7 +42,6 @@ public class AutomataD extends Automata{
 		act.add(new GrupoEstados(it));
 		act.get(it).aniadirEstado(aut.getEstados().get(it));	//Linea de Victor.
 		auxDelta.put(new GrupoEstados(it), null);
-		auxDelta
 		
 		
 		do {
@@ -74,7 +73,7 @@ public class AutomataD extends Automata{
 		int i=0;
 		for(GrupoEstados g : grupos) {
 			System.out.println(i);
-			delta[g.getIn1()][g.getIn2()]=g.getId();
+			//delta[g.getIn1()][g.getIn2()]=g.getId();
 			System.out.println(i);
 			i++;
 		}
