@@ -8,6 +8,7 @@ public class GrupoEstados {
 	private ArrayList<Estado> out;
 	private int id;
 	
+	
 	public GrupoEstados(int id) {
 		this.id=id;
 		in1=Integer.MAX_VALUE;

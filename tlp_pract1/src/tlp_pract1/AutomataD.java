@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
-
+import java.util.*;
 public class AutomataD extends Automata{
 
 	
@@ -33,6 +33,7 @@ public class AutomataD extends Automata{
 	
 	public AutomataD transformar(AutomataN aut) {
 		ArrayList<GrupoEstados> act= new ArrayList<GrupoEstados>();
+		HashMap<Integer, GrupoEstados> auxDelta= new HashMap<>();
 		int it=0;
 		int estadoMax=0;
 		
@@ -68,9 +69,12 @@ public class AutomataD extends Automata{
 	private void rellenarDelta(ArrayList<GrupoEstados> grupos) {
 		delta= new int [grupos.size()][sigma.length];
 		
-		
+		int i=0;
 		for(GrupoEstados g : grupos) {
+			System.out.println(i);
 			delta[g.getIn1()][g.getIn2()]=g.getId();
+			System.out.println(i);
+			i++;
 		}
 			
 				
